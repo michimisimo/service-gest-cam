@@ -5,7 +5,7 @@ const supabaseUrl = process.env.SUPABASE_URL;
 const supabaseKey = process.env.SUPABASE_KEY;
 const supabase = createClient(supabaseUrl, supabaseKey);
 
-exports.getAllCampanas = async () => { 
+exports.getAllCampanas = async () => {
     const { data, error } = await supabase
         .from('campana')
         .select(`
@@ -17,6 +17,26 @@ exports.getAllCampanas = async () => {
             id_tipo_campana, 
             tipo_campana(nombre)
         `);
+
+    if (error) throw new Error(error.message);
+    return data;
+};
+
+exports.UpdateCampana = async (id, data) => {
+    const { data, error } = await supabase
+        .from('campana')
+        .update(data)
+        .eq('id_campana', id);
+
+    if (error) throw new Error(error.message);
+    return data;
+};
+
+exports.deleteCampana = async (id) => {
+    const { data, error } = await supabase
+        .from('campana')
+        .delete()
+        .eq('id_campana', id)
 
     if (error) throw new Error(error.message);
     return data;

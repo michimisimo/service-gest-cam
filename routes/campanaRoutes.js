@@ -5,5 +5,7 @@ const router = express.Router();
 
 // Rutas para destinatarios
 router.get('/getCampanas', campanaController.getCampanas);
+router.patch('/updateCampana:id', campanaController.updateCampana);
+router.put('/deleteCampana:id', campanaController.deleteCampana);
 
 module.exports = router;
