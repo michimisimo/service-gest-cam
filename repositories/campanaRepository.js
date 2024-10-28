@@ -11,6 +11,8 @@ exports.getAllCampanas = async () => {
         .select(`
             id_campana, 
             nombre, 
+            id_estado,
+            estado_campana(nombre),
             fecha_creacion, 
             fecha_programada, 
             hora_programada, 
@@ -22,10 +24,10 @@ exports.getAllCampanas = async () => {
     return data;
 };
 
-exports.UpdateCampana = async (id, data) => {
+exports.UpdateCampana = async (id, dataCam) => {
     const { data, error } = await supabase
         .from('campana')
-        .update(data)
+        .update(dataCam)
         .eq('id_campana', id);
 
     if (error) throw new Error(error.message);
