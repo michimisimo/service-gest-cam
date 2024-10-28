@@ -28,4 +28,14 @@ exports.deleteCampana = async (req, res) => {
     } catch (error) {
         res.status(500).json({ error: error.message })
     }
-}
+};
+
+exports.crearCampana = async (req, res) => {
+    const { nombre, fecha_programada, hora_programada, id_tipo_campana, id_estado } = req.body;
+    try {
+        const data = await campanaService.crearCampana({ nombre, fecha_programada, hora_programada, id_tipo_campana, id_estado });
+        res.status(200).send({ message: 'campaña creada exitosamente', data });
+    } catch (error) {
+        res.status(400).send({ message: 'Error al crear campaña', error: error.message });
+    }
+};

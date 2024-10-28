@@ -43,3 +43,11 @@ exports.deleteCampana = async (id) => {
     if (error) throw new Error(error.message);
     return data;
 };
+
+exports.insertCampana = async (campana) => {
+    const { data, error } = await supabase
+        .from('campana')
+        .insert([campana])
+    if (error) throw new Error(error.message);
+    return data;
+};    

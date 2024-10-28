@@ -14,3 +14,8 @@ exports.deletecampana = async (id) => {
     const data = await campanaRepository.deleteCampana(id);
     return data;
 }
+
+exports.crearCampana = async (campana) => {
+    const data = await campanaRepository.insertCampana(campana)
+    return data;
+};
