@@ -6,7 +6,7 @@ exports.getCampanas = async () => {
 };
 
 exports.updateCampana = async (id, body) => {
-    const data = await campanaRepository.UpdateCampanas(id, body);
+    const data = await campanaRepository.UpdateCampana(id, body);
     return data;
 };
 

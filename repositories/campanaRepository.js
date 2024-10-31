@@ -24,7 +24,7 @@ exports.getAllCampanas = async () => {
     return data;
 };
 
-exports.UpdateCampana = async (id, dataCam) => {
+exports.UpdateCampana = async (id, dataCam) => {    
     const { data, error } = await supabase
         .from('campana')
         .update(dataCam)
