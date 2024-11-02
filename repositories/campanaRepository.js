@@ -51,3 +51,11 @@ exports.insertCampana = async (campana) => {
     if (error) throw new Error(error.message);
     return data;
 };    
+
+exports.insertEmailCampana = async (email) => {
+    const { data, error } = await supabase
+        .from('email')
+        .insert([email])
+    if (error) throw new Error(error.message);
+    return data;
+};  

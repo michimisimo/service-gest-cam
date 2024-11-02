@@ -19,3 +19,8 @@ exports.crearCampana = async (campana) => {
     const data = await campanaRepository.insertCampana(campana)
     return data;
 };
+
+exports.crearEmailCampana = async (email) => {
+    const data = await campanaRepository.insertEmailCampana(email)
+    return data;
+};
