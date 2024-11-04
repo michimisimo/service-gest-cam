@@ -37,7 +37,7 @@ exports.UpdateCampana = async (id, dataCam) => {
 exports.UpdateEstadoCampana = async (id) => {    
     const { data, error } = await supabase
         .from('campana')
-        .update('id_estado', 1)
+        .update({ id_estado: 1 })
         .eq('id_campana', id);
 
     if (error) throw new Error(error.message);
