@@ -22,14 +22,15 @@ exports.updateCampana = async (req, res) => {
 
 exports.updateEstadoCampana = async (req, res) => {
     const id = req.params.id;
+    const { id_estado } = req.body;  // Extraer id_estado del cuerpo de la solicitud
+
     try {
-        await campanaService.updateEstadoCampana(id);
-        res.status(200).json({ message: 'estado de la campaña actualizado exitosamente.' })
+        await campanaService.updateEstadoCampana(id, id_estado);  // Pasar id_estado al servicio
+        res.status(200).json({ message: 'estado de la campaña actualizado exitosamente.' });
     } catch (error) {
-        res.status(500).json({ error: error.message })
+        res.status(500).json({ error: error.message });
     }
 };
-
 exports.deleteCampana = async (req, res) => {
     const id = req.params;
     try {

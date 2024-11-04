@@ -34,10 +34,10 @@ exports.UpdateCampana = async (id, dataCam) => {
     return data;
 };
 
-exports.UpdateEstadoCampana = async (id) => {    
+exports.UpdateEstadoCampana = async (id, id_estado) => {    
     const { data, error } = await supabase
         .from('campana')
-        .update({ id_estado: 1 })
+        .update({ id_estado: id_estado })  // Usar id_estado como valor dinámico
         .eq('id_campana', id);
 
     if (error) throw new Error(error.message);

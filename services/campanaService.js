@@ -10,8 +10,8 @@ exports.updateCampana = async (id, body) => {
     return data;
 };
 
-exports.updateEstadoCampana = async (id) => {
-    const data = await campanaRepository.UpdateEstadoCampana(id);
+exports.updateEstadoCampana = async (id, id_estado) => {
+    const data = await campanaRepository.UpdateEstadoCampana(id, id_estado);  // Pasar id_estado al repositorio
     return data;
 };
 
