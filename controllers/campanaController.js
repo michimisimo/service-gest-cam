@@ -52,9 +52,9 @@ exports.crearCampana = async (req, res) => {
 };
 
 exports.crearEmailCampana = async (req, res) => {
-    const { correo_remitente, correo_destinatario, asunto, contenido, id_campana } = req.body;
+    const { correo_remitente, asunto, contenido, id_campana } = req.body;
     try {
-        const data = await campanaService.crearEmailCampana({ correo_remitente, correo_destinatario, asunto, contenido, id_campana });
+        const data = await campanaService.crearEmailCampana({ correo_remitente, asunto, contenido, id_campana });
         res.status(200).send({ message: 'campaña creada exitosamente', data });
     } catch (error) {
         res.status(400).send({ message: 'Error al crear campaña', error: error.message });
