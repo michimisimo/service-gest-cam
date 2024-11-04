@@ -34,6 +34,16 @@ exports.UpdateCampana = async (id, dataCam) => {
     return data;
 };
 
+exports.UpdateEstadoCampana = async (id) => {    
+    const { data, error } = await supabase
+        .from('campana')
+        .update('id_estado', 1)
+        .eq('id_campana', id);
+
+    if (error) throw new Error(error.message);
+    return data;
+};
+
 exports.deleteCampana = async (id) => {
     const { data, error } = await supabase
         .from('campana')
@@ -59,3 +69,13 @@ exports.insertEmailCampana = async (email) => {
     if (error) throw new Error(error.message);
     return data;
 };  
+
+exports.getEmailCampana = async (id_campana) => {
+    const { data, error } = await supabase
+        .from('email')
+        .select('*')
+        .eq('id_campana', id_campana);
+
+    if (error) throw new Error(error.message);
+    return data;
+};

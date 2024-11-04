@@ -20,6 +20,16 @@ exports.updateCampana = async (req, res) => {
     }
 };
 
+exports.updateEstadoCampana = async (req, res) => {
+    const id = req.params.id;
+    try {
+        await campanaService.updateEstadoCampana(id);
+        res.status(200).json({ message: 'estado de la campaña actualizado exitosamente.' })
+    } catch (error) {
+        res.status(500).json({ error: error.message })
+    }
+};
+
 exports.deleteCampana = async (req, res) => {
     const id = req.params;
     try {
@@ -47,5 +57,15 @@ exports.crearEmailCampana = async (req, res) => {
         res.status(200).send({ message: 'campaña creada exitosamente', data });
     } catch (error) {
         res.status(400).send({ message: 'Error al crear campaña', error: error.message });
+    }
+};
+
+exports.getEmailCampana = async (req, res) => {
+    const id = req.params.id;
+    try {
+        const data = await campanaService.getEmailCampana(id);
+        res.status(200).json(data);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
     }
 };
